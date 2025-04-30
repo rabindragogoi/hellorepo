@@ -1,4 +1,4 @@
-from hellorepo.app.application import app
+from app.application import app
 import unittest
 
 
