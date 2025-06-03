@@ -16,8 +16,8 @@ pipeline{
        steps {
           script{
             bat '''
-            cd test
-            dir
+            pytest --cov=app --cov-report=xml --cov-report=term --junitxml=tests\\results.xml
+
             '''
           }
        }
