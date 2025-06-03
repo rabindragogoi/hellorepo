@@ -2,21 +2,23 @@ pipeline{
   agent any
 
   stages {
-    stage ("first Stage"){
+    stage ("Code Checkout"){
        steps {
           script{
-              echo "Hello first script Pipeline"
+             bat '''
+                echo Multi-line block
+                dir
+             '''
           }
        }
     }
-    stage ("Build Stage"){
+    stage ("Unittest"){
        steps {
           script{
-            bat 'echo Hello from Windows CMD'
-                bat '''
-                    echo Multi-line block
-                    dir
-                '''
+            bat '''
+            cd test
+            dir
+            '''
           }
        }
     }
