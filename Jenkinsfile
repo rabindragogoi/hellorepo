@@ -18,11 +18,7 @@ pipeline{
             bat '''
             pytest --cov=app --cov-report=xml --cov-report=term --junitxml=tests\\results.xml
             coverage report --fail-under=90
-            echo The files are
-            dir
-            cd tests
-            dir
-
+            if %ERRORLEVEL% NEQ 0 exit /b %ERRORLEVEL%
             '''
           }
        }
