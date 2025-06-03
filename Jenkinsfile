@@ -17,8 +17,6 @@ pipeline{
           script{
             bat '''
             pytest --cov=app --cov-report=xml --cov-report=term --junitxml=tests\\results.xml
-            coverage report --fail-under=90
-            if %ERRORLEVEL% NEQ 0 exit /b %ERRORLEVEL%
             '''
           }
        }
@@ -36,7 +34,17 @@ pipeline{
                 reportName: 'Coverage Report'
             ])
         }
+    }
+    stage ("Code Coverage"){
+        steps{
+        script{
+            bat '''
+              coverage report --fail-under=90
+              if %ERRORLEVEL% NEQ 0 exit /b %ERRORLEVEL%
+            '''
         }
+        }
+    }
 
   }
   post {
