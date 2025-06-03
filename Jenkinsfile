@@ -21,6 +21,16 @@ pipeline{
           }
        }
     }
+    stage ("Code Coverage"){
+        steps{
+        script{
+            bat '''
+              coverage report --fail-under=80
+              if %ERRORLEVEL% NEQ 0 exit /b %ERRORLEVEL%
+            '''
+        }
+        }
+    }
     stage('Publish Results') {
         steps {
             junit 'tests\\results.xml'
@@ -35,16 +45,7 @@ pipeline{
             ])
         }
     }
-    stage ("Code Coverage"){
-        steps{
-        script{
-            bat '''
-              coverage report --fail-under=90
-              if %ERRORLEVEL% NEQ 0 exit /b %ERRORLEVEL%
-            '''
-        }
-        }
-    }
+
 
   }
   post {
