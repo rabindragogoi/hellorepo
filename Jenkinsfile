@@ -17,7 +17,8 @@ pipeline{
           script{
             bat '''
             pytest --cov=app --cov-report=xml --cov-report=term --junitxml=tests\\results.xml
-
+            echo The files are
+            dir
             '''
           }
        }
