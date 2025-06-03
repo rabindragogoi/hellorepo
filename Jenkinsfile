@@ -27,6 +27,7 @@ pipeline{
   post {
         always {
             echo 'This will always run after the pipeline execution.'  // Run after the pipeline completes
+            deleteDir()
         }
         success {
             echo 'This will run only if the pipeline completes successfully.'
