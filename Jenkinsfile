@@ -9,18 +9,6 @@ pipeline{
           }
        }
     }
-    stage('Clone Repo') {
-            steps {
-                checkout([
-                    $class: 'GitSCM',
-                    branches: [[name: '*/develop']],
-                    userRemoteConfigs: [[
-                        url: 'git@github.com:rabindragogoi/hellorepo.git',
-                        credentialsId: 'github-credentials'
-                    ]]
-                ])
-            }
-        }
     stage ("Build Stage"){
        steps {
           script{
