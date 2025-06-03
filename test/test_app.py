@@ -1,6 +1,5 @@
-from app.application import app
+from hellorepo.app.application import app
 import unittest
-
 
 
 class FlaskAppTestCase(unittest.TestCase):
@@ -18,4 +17,3 @@ class FlaskAppTestCase(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
