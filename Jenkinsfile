@@ -1,5 +1,11 @@
 pipeline{
   agent any
+  parameters {
+        string(name: 'ENV', defaultValue: 'dev', description: 'Environment to deploy to')
+        booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'Run tests?')
+        choice(name: 'REGION', choices: ['us-east-1', 'us-west-1', 'eu-central-1'], description: 'Choose AWS Region')
+        password(name: 'SECRET_KEY', defaultValue: '', description: 'Sensitive key (masked)')
+  }
 
   stages {
     stage ("Code Checkout"){
