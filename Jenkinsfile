@@ -25,6 +25,21 @@ pipeline{
           }
        }
     }
+    stage('Publish Results') {
+        steps {
+            junit 'tests\\results.xml'
+
+            publishHTML(target: [
+                allowMissing: false,
+                alwaysLinkToLastBuild: true,
+                keepAll: true,
+                reportDir: '.',
+                reportFiles: 'coverage.xml',
+                reportName: 'Coverage Report'
+            ])
+        }
+        }
+
   }
   post {
         always {
