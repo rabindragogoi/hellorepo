@@ -17,10 +17,12 @@ pipeline{
           script{
             bat '''
             pytest --cov=app --cov-report=xml --cov-report=term --junitxml=tests\\results.xml
+            coverage report --fail-under=90
             echo The files are
             dir
             cd tests
             dir
+
             '''
           }
        }
